@@ -73,23 +73,24 @@ function App() {
             onClick={() => {
               const input = document.createElement("input");
               input.type = "file";
-              input.accept = ".json,.bnp"; // .bnp custom ext
+              input.accept = ".json,.bnp,application/json,text/plain"; // Broaden support for iOS
               input.onchange = (e: Event) => {
                 const file = (e.target as HTMLInputElement).files?.[0];
                 if (file) {
                   const reader = new FileReader();
                   reader.onload = (re) => {
-                    const text = re.target?.result as string;
-                    if (text) {
-                      graph.fromJSON(text);
-                      notifyUpdate();
-                      // Also update maxComps state if it was loaded
-                      // But App state 'maxComps' is local.
-                      // We should sync it?
-                      // graph.config.maxComponents is updated.
-                      // We can force a re-render or push graph config to state.
-                      // Let's just create a generic refresh.
+                    try {
+                      const text = re.target?.result as string;
+                      if (text) {
+                        graph.fromJSON(text);
+                        notifyUpdate();
+                      }
+                    } catch (err) {
+                      alert("Error parsing file: " + err);
                     }
+                  };
+                  reader.onerror = () => {
+                    alert("Failed to read file.");
                   };
                   reader.readAsText(file);
                 }
