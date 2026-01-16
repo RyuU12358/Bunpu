@@ -4,7 +4,7 @@ import { Dist } from "../core/dist";
 import type { Atom } from "../core/types";
 
 const mockCtx = {
-  getValue: (id: string) => {
+  getValue: (_id: string) => {
     return new Dist([]);
   },
 };
