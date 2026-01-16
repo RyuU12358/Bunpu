@@ -1,0 +1,52 @@
+.suggestion-list {
+  position: absolute;
+  z-index: 1000;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 13px;
+  width: 300px;
+}
+
+.suggestion-list li {
+  padding: 6px 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.suggestion-list li:last-child {
+  border-bottom: none;
+}
+
+.suggestion-list li.selected {
+  background-color: #e8f0fe;
+}
+
+.suggestion-list li:hover {
+  background-color: #f5f5f5;
+}
+
+.func-name {
+  font-weight: bold;
+  color: #2b5797;
+}
+
+.func-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85em;
+  color: #666;
+  margin-top: 2px;
+}
+
+.func-args {
+  font-family: monospace;
+  margin-right: 8px;
+}

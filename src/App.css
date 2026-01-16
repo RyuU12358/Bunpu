@@ -1,0 +1,181 @@
+:root {
+  --primary-color: #2b5797; /* Excel-ish Blue */
+  --primary-hover: #1e3f6f;
+  --bg-color: #f8f9fa;
+  --border-color: #dadce0;
+  --text-main: #202124;
+  --text-muted: #5f6368;
+  --white: #ffffff;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-color);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Toolbar Styling */
+.toolbar {
+  height: 48px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+}
+
+.header-title h1 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  margin-right: 12px;
+  letter-spacing: -0.5px;
+  color: var(--white); /* Fix contrast against primary color */
+}
+
+.filename-input {
+  font-size: 1.1rem;
+  padding: 4px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  width: 200px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.filename-input:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.filename-input:focus {
+  background: var(--white);
+  color: var(--text-main);
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.settings {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.lang-toggle {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.lang-toggle button {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/* Main Content Layout */
+.formula-bar-container {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+.fx-icon {
+  font-family: "Times New Roman", serif;
+  font-style: italic;
+  font-weight: bold;
+  color: #999;
+  margin-right: 8px;
+  font-size: 1.1rem;
+  user-select: none;
+}
+
+.main-content {
+  display: flex;
+  flex: 1; /* Take remaining height */
+  overflow: hidden; /* Prevent spillover */
+  min-height: 0; /* Crucial for flex nested scrolling */
+  width: 100%;
+}
+
+.grid-pane {
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+  position: relative;
+}
+
+.inspector-pane {
+  width: 300px;
+  border-left: 1px solid #ccc;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .inspector-pane {
+    width: 100%;
+    height: 45%; /* Use percentage height on mobile */
+    min-height: 200px;
+    border-left: none;
+    border-top: 1px solid #ccc;
+  }
+
+  .grid-pane {
+    flex: 1; /* Takes remaining space */
+  }
+
+  .toolbar {
+    height: auto;
+    flex-wrap: wrap;
+    padding: 8px 16px;
+    gap: 8px;
+  }
+
+  .header-title {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .settings {
+    margin-left: 0;
+    flex: 1;
+  }
+
+  .file-actions {
+    margin-left: 10px !important;
+  }
+
+  .lang-toggle {
+    margin-left: auto;
+  }
+}
