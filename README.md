@@ -1,73 +1,57 @@
-# React + TypeScript + Vite
+# Bunpu (分布)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-Currently, two official plugins are available:
+**Bunpu** is a spreadsheet application specialized for **probability distribution calculations**.  
+It allows you to manipulate probability distributions (like Normal, Binomial, Custom) directly as cell values, making complex probabilistic modeling (e.g., Gacha simulation, Pachinko analysis, Risk assessment) intuitive and easy.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Bunpu**（分布）は、**確率分布の計算**に特化したスプレッドシートアプリです。  
+確率分布そのものを一つの「値」としてセルで扱えるため、ガチャの確率計算やパチンコの期待値分析、リスク評価などの複雑な確率モデルを直感的に構築できます。
 
-## React Compiler
+## 🚀 Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**[Try it out here! / デモを試す](https://RyuU12358.github.io/Bunpu/)**
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Distribution as First-Class Citizen**: Handle entire probability distributions in a single cell.
+  - `NORM(0, 1)`: Standard Normal Distribution
+  - `BINOM(10, 0.5)`: Binomial Distribution
+  - `DISCRETE(...)`: Custom Discrete Distribution
+- **Distribution Arithmetic**: Add, subtract, multiply, or divide distributions directly.
+  - `A1 + B1` (Convolution of distributions)
+  - `MAX(A1, B1)` (Maximum distribution)
+- **High Performance**: Core calculation engine written in **Rust** (compiled to **WebAssembly**) for blazing fast convolutions.
+- **Excel-like Interface**: Familiar spreadsheet UI with formula bar, cell references, and range selection.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠 Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Frontend**: React, TypeScript, Vite
+- **Core Engine**: Rust, WebAssembly (via `wasm-bindgen`)
+- **State Management**: Custom Graph-based Reactivity Engine
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📦 Installation
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+To run this project locally:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Clone the repository**
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+   ```bash
+   git clone https://github.com/RyuU12358/Bunpu.git
+   cd Bunpu
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Run development server**
+   ```bash
+   npm run dev
+   ```
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
