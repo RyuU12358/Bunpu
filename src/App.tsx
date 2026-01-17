@@ -63,7 +63,8 @@ function App() {
               const url = URL.createObjectURL(blob);
               const a = document.createElement("a");
               a.href = url;
-              a.download = `${filename}.bnp`;
+              a.download = `${filename}.json`;
+
               a.click();
             }}
           >
